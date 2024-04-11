@@ -1,4 +1,4 @@
-package com.antoniocostadossantos.alurevy_alura
+package com.antoniocostadossantos.alurevy_alura.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
