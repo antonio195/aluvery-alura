@@ -1,4 +1,4 @@
-package com.antoniocostadossantos.dao
+package com.antoniocostadossantos.alurevy_alura.dao
 
 import androidx.compose.runtime.mutableStateListOf
 import com.antoniocostadossantos.alurevy_alura.data.sample.sampleProducts

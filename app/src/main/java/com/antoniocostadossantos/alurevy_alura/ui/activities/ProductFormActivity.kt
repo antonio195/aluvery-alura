@@ -45,7 +45,7 @@ import coil.compose.AsyncImage
 import com.antoniocostadossantos.alurevy_alura.R
 import com.antoniocostadossantos.alurevy_alura.model.Product
 import com.antoniocostadossantos.alurevy_alura.ui.theme.AlurevyaluraTheme
-import com.antoniocostadossantos.dao.ProductDao
+import com.antoniocostadossantos.alurevy_alura.dao.ProductDao
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.util.Formatter

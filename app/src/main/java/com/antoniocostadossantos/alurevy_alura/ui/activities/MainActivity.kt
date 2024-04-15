@@ -15,14 +15,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.antoniocostadossantos.alurevy_alura.data.sample.sampleCandies
 import com.antoniocostadossantos.alurevy_alura.data.sample.sampleDrinks
 import com.antoniocostadossantos.alurevy_alura.ui.screens.HomeScreen
 import com.antoniocostadossantos.alurevy_alura.ui.screens.HomeScreenUiState
 import com.antoniocostadossantos.alurevy_alura.ui.theme.AlurevyaluraTheme
-import com.antoniocostadossantos.dao.ProductDao
+import com.antoniocostadossantos.alurevy_alura.dao.ProductDao
+import com.antoniocostadossantos.alurevy_alura.data.sample.sampleProducts
+import com.antoniocostadossantos.alurevy_alura.model.Product
 
 class MainActivity : ComponentActivity() {
 
@@ -36,14 +41,10 @@ class MainActivity : ComponentActivity() {
                     startActivity(Intent(this, ProductFormActivity::class.java))
                 },
                 content = {
-                    val sections = mapOf(
-                        "Todos produtos" to dao.getProducts(),
-                        "Promoções" to sampleCandies + sampleDrinks,
-                        "Doces" to sampleCandies,
-                        "Bebidas" to sampleDrinks,
-                    )
-                    val state = remember { HomeScreenUiState() }
-                    HomeScreen(sections = sections, state = state)
+                    val products = dao.getProducts()
+
+
+                    HomeScreen(products = products)
                 },
             )
         }
