@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -84,10 +85,10 @@ fun ProductFormScreen(onSaveButtonClick: (Product) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
 
-        var url by remember { mutableStateOf("") }
-        var name by remember { mutableStateOf("") }
-        var price by remember { mutableStateOf("") }
-        var description by remember { mutableStateOf("") }
+        var url by rememberSaveable { mutableStateOf("") }
+        var name by rememberSaveable { mutableStateOf("") }
+        var price by rememberSaveable { mutableStateOf("") }
+        var description by rememberSaveable { mutableStateOf("") }
 
         val formatter = remember { DecimalFormat("#.##") }
 
