@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -15,23 +16,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.antoniocostadossantos.alurevy_alura.data.sample.sampleCandies
-import com.antoniocostadossantos.alurevy_alura.data.sample.sampleDrinks
-import com.antoniocostadossantos.alurevy_alura.ui.screens.HomeScreen
-import com.antoniocostadossantos.alurevy_alura.ui.screens.HomeScreenUiState
-import com.antoniocostadossantos.alurevy_alura.ui.theme.AlurevyaluraTheme
 import com.antoniocostadossantos.alurevy_alura.dao.ProductDao
-import com.antoniocostadossantos.alurevy_alura.data.sample.sampleProducts
-import com.antoniocostadossantos.alurevy_alura.model.Product
+import com.antoniocostadossantos.alurevy_alura.ui.screens.HomeScreen
+import com.antoniocostadossantos.alurevy_alura.ui.theme.AlurevyaluraTheme
+import com.antoniocostadossantos.alurevy_alura.ui.viewmodel.HomeScreenViewModel
 
 class MainActivity : ComponentActivity() {
-
-    private val dao = ProductDao()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +32,9 @@ class MainActivity : ComponentActivity() {
                     startActivity(Intent(this, ProductFormActivity::class.java))
                 },
                 content = {
-                    val products = dao.getProducts()
 
-
-                    HomeScreen(products = products)
+                    val viewModel by viewModels<HomeScreenViewModel>()
+                    HomeScreen(viewModel = viewModel)
                 },
             )
         }

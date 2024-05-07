@@ -47,6 +47,7 @@ import com.antoniocostadossantos.alurevy_alura.R
 import com.antoniocostadossantos.alurevy_alura.model.Product
 import com.antoniocostadossantos.alurevy_alura.ui.theme.AlurevyaluraTheme
 import com.antoniocostadossantos.alurevy_alura.dao.ProductDao
+import com.antoniocostadossantos.alurevy_alura.ui.viewmodel.ProductFormScreenViewModel
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.util.Formatter
@@ -76,7 +77,10 @@ class ProductFormActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProductFormScreen(onSaveButtonClick: (Product) -> Unit) {
+fun ProductFormScreen(
+    viewModel: ProductFormScreenViewModel,
+    onSaveButtonClick: (Product) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -84,13 +88,6 @@ fun ProductFormScreen(onSaveButtonClick: (Product) -> Unit) {
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-
-        var url by rememberSaveable { mutableStateOf("") }
-        var name by rememberSaveable { mutableStateOf("") }
-        var price by rememberSaveable { mutableStateOf("") }
-        var description by rememberSaveable { mutableStateOf("") }
-
-        val formatter = remember { DecimalFormat("#.##") }
 
         Text(
             text = "Novo produto",
